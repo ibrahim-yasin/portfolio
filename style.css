@@ -8,27 +8,28 @@
 
 :root {
   /* Backgrounds */
-  --bg: #090d16;
-  --bg-alt: #0d1220;
-  --bg-card: #0f1628;
+  --bg: #05010a;
+  --bg-alt: #0a0514;
+  --bg-card: #11081f;
 
-  /* Accent (Main Purple) */
-  --accent: #a855f7;
-  --accent-2: #7c3aed;
+  /* Accent (Modern Purple) */
+  --accent: #c084fc;
+  --accent-2: #9333ea;
+  --accent-strong: #6d28d9;
 
   /* Glow & Borders */
-  --accent-glow: rgba(168, 85, 247, 0.15);
+  --accent-glow: rgba(192, 132, 252, 0.22);
   --border: rgba(255, 255, 255, 0.07);
-  --border-hover: rgba(168, 85, 247, 0.25);
+  --border-hover: rgba(192, 132, 252, 0.3);
 
   /* Text */
-  --text: #e6e9f2;
-  --text-muted: #9aa4bf;
-  --text-dim: #6b7490;
+  --text: #f5f3ff;
+  --text-muted: #b7aacd;
+  --text-dim: #7e6f98;
 
   /* Tags */
-  --tag-bg: rgba(168, 85, 247, 0.1);
-  --tag-text: #d8b4fe;
+  --tag-bg: rgba(192, 132, 252, 0.12);
+  --tag-text: #ead7ff;
 
   /* UI */
   --r-card: 14px;
@@ -69,7 +70,7 @@ section[id] {
   inset: 0 0 auto 0;
   z-index: 100;
   height: var(--nav-h);
-  background: rgba(9, 13, 22, 0.85);
+  background: rgba(5, 1, 10, 0.84);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
@@ -91,14 +92,16 @@ section[id] {
   letter-spacing: 0.1em;
   color: var(--accent);
   background: var(--tag-bg);
-  border: 1px solid rgba(91, 126, 245, 0.22);
+  border: 1px solid rgba(192, 132, 252, 0.28);
   border-radius: 8px;
   padding: 5px 12px;
-  transition: background 0.2s;
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 
 .nav-logo:hover {
-  background: rgba(91, 126, 245, 0.18);
+  background: rgba(192, 132, 252, 0.18);
+  border-color: rgba(192, 132, 252, 0.4);
+  box-shadow: 0 0 18px rgba(192, 132, 252, 0.18);
 }
 
 .nav-links {
@@ -158,17 +161,19 @@ section[id] {
   align-items: center;
   gap: 9px;
   padding: 11px 24px;
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
   color: #fff;
   font-size: 0.88rem;
   font-weight: 600;
   border-radius: var(--r-pill);
-  transition: opacity 0.2s, box-shadow 0.2s;
+  transition: opacity 0.2s, box-shadow 0.2s, transform 0.2s;
+  box-shadow: 0 0 22px rgba(192, 132, 252, 0.28);
 }
 
 .btn-primary:hover {
-  opacity: 0.87;
-  box-shadow: 0 0 28px rgba(91, 126, 245, 0.38);
+  opacity: 0.95;
+  box-shadow: 0 0 34px rgba(192, 132, 252, 0.45);
+  transform: translateY(-1px);
 }
 
 .btn-ghost {
@@ -180,12 +185,13 @@ section[id] {
   font-size: 0.88rem;
   font-weight: 500;
   border-radius: var(--r-pill);
-  transition: border-color 0.2s, color 0.2s;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
 }
 
 .btn-ghost:hover {
   border-color: var(--border-hover);
   color: var(--text);
+  background: rgba(192, 132, 252, 0.05);
 }
 
 /* ── Hero ────────────────────────────────────────────────────────────────── */
@@ -208,7 +214,11 @@ section[id] {
   transform: translateX(-50%);
   width: 800px;
   height: 480px;
-  background: radial-gradient(ellipse at 50% 20%, rgba(91, 126, 245, 0.1) 0%, transparent 65%);
+  background: radial-gradient(
+    ellipse at 50% 20%,
+    rgba(192, 132, 252, 0.18) 0%,
+    transparent 70%
+  );
   pointer-events: none;
 }
 
@@ -225,7 +235,7 @@ section[id] {
   text-transform: uppercase;
   color: var(--accent);
   background: var(--tag-bg);
-  border: 1px solid rgba(91, 126, 245, 0.22);
+  border: 1px solid rgba(192, 132, 252, 0.28);
   border-radius: var(--r-pill);
   padding: 5px 16px;
   margin-bottom: 28px;
@@ -293,7 +303,7 @@ section[id] {
   flex-direction: column;
   gap: 13px;
   padding: 26px;
-  background: var(--bg-card);
+  background: linear-gradient(180deg, rgba(17, 8, 31, 0.95), rgba(12, 6, 24, 0.98));
   border: 1px solid var(--border);
   border-radius: var(--r-card);
   color: inherit;
@@ -302,8 +312,8 @@ section[id] {
 
 .card:hover {
   border-color: var(--border-hover);
-  box-shadow: 0 4px 40px var(--accent-glow);
-  transform: translateY(-3px);
+  box-shadow: 0 0 50px rgba(192, 132, 252, 0.2);
+  transform: translateY(-6px) scale(1.01);
 }
 
 .card-category {
@@ -393,12 +403,13 @@ section[id] {
   border: 1px solid var(--border);
   border-radius: var(--r-pill);
   padding: 5px 14px;
-  transition: border-color 0.2s, color 0.2s;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
 }
 
 .skill-pills span:hover {
   border-color: var(--border-hover);
   color: var(--text);
+  background: rgba(192, 132, 252, 0.06);
 }
 
 /* ── Contact ─────────────────────────────────────────────────────────────── */
