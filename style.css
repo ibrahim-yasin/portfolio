@@ -1,0 +1,318 @@
+/* ─── Reset & Base ──────────────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:           #0d1117;
+  --bg-section:   #111820;
+  --bg-card:      #161c26;
+  --border:       #21293a;
+  --accent:       #4f8ef7;
+  --accent-dim:   #2e5cad;
+  --text:         #e2e8f0;
+  --text-muted:   #7d8fa8;
+  --tag-bg:       #1a2640;
+  --tag-text:     #7eb3f7;
+  --radius:       10px;
+  --max-width:    860px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ─── Header ────────────────────────────────────────────────────────────────── */
+
+header {
+  background-color: var(--bg-section);
+  border-bottom: 1px solid var(--border);
+  padding: 64px 24px 52px;
+  text-align: center;
+}
+
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Initials avatar */
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--tag-bg);
+  border: 2px solid var(--border);
+  color: var(--accent);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--text);
+}
+
+.tagline {
+  margin-top: 6px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.bio {
+  max-width: 580px;
+  margin: 20px auto 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* GitHub button */
+.github-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  padding: 9px 20px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text);
+  transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+}
+
+.github-btn:hover {
+  border-color: var(--accent-dim);
+  color: var(--accent);
+  background-color: var(--tag-bg);
+  text-decoration: none;
+}
+
+/* Nav pills */
+nav {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+nav a {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  padding: 5px 14px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent);
+  border-color: var(--accent-dim);
+  text-decoration: none;
+}
+
+/* ─── Main Layout ───────────────────────────────────────────────────────────── */
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px 100px;
+}
+
+section {
+  padding-top: 72px;
+}
+
+/* Section header row */
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+
+.section-header h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.section-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* About text */
+.about-text {
+  color: var(--text-muted);
+  max-width: 680px;
+  font-size: 0.97rem;
+}
+
+/* ─── Cards ─────────────────────────────────────────────────────────────────── */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.2s, transform 0.18s;
+}
+
+.card:hover {
+  border-color: var(--accent-dim);
+  transform: translateY(-3px);
+}
+
+.card h3 {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.card p {
+  font-size: 0.87rem;
+  color: var(--text-muted);
+  flex: 1;
+  line-height: 1.6;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tags span {
+  background-color: var(--tag-bg);
+  color: var(--tag-text);
+  font-size: 0.73rem;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.card-link {
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.card-link:hover {
+  text-decoration: underline;
+}
+
+/* ─── Coming Soon ───────────────────────────────────────────────────────────── */
+
+.coming-soon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  background-color: var(--bg-card);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 10px 20px;
+}
+
+/* ─── Contact ───────────────────────────────────────────────────────────────── */
+
+.contact-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.contact-block p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* ─── Footer ────────────────────────────────────────────────────────────────── */
+
+footer {
+  text-align: center;
+  padding: 28px 24px;
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* ─── Responsive ────────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  header {
+    padding: 48px 20px 40px;
+  }
+
+  header h1 {
+    font-size: 1.75rem;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  nav {
+    gap: 6px;
+  }
+
+  .contact-block {
+    align-items: stretch;
+  }
+
+  .github-btn {
+    justify-content: center;
+  }
+}
