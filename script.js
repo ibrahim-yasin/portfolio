@@ -1,164 +1,115 @@
-/* ── Navbar: scroll state & active link ──────────────────────────────────── */
-(function () {
-  const navbar    = document.getElementById('navbar');
-  const navLinks  = document.querySelectorAll('.nav-links a');
-  const sections  = document.querySelectorAll('section[id]');
+/* ═══════════════════════════════════════════════════════════
+   Ibrahim Yasin — Portfolio  |  script.js
+   Smooth scroll · Scroll-reveal · Active nav · Mobile menu
+═══════════════════════════════════════════════════════════ */
 
-  function onScroll() {
-    // Scrolled class for glass effect intensification
-    navbar.classList.toggle('scrolled', window.scrollY > 40);
+/* ── Navbar: scroll state ─────────────────────────────── */
+const navbar = document.getElementById('navbar');
 
-    // Active nav link — find which section is in view
-    let current = '';
-    sections.forEach(sec => {
-      const top = sec.offsetTop - 80;
-      if (window.scrollY >= top) current = sec.id;
-    });
-    navLinks.forEach(a => {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-    });
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 20) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
   }
+}, { passive: true });
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll(); // run once on load
-})();
+/* ── Mobile hamburger menu ────────────────────────────── */
+const hamburger = document.getElementById('hamburger');
+const navLinks  = document.getElementById('nav-links');
 
-/* ── Mobile hamburger menu ──────────────────────────────────────────────── */
-(function () {
-  const hamburger = document.getElementById('hamburger');
-  const navLinks  = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  hamburger.setAttribute('aria-expanded', String(isOpen));
+});
 
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    navLinks.classList.toggle('open');
+// Close mobile menu when a link is clicked
+navLinks.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
   });
+});
 
-  // Close on link click (mobile)
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      navLinks.classList.remove('open');
-    });
-  });
-})();
+/* ── Active nav link on scroll ────────────────────────── */
+const sections  = document.querySelectorAll('section[id]');
+const allLinks  = document.querySelectorAll('.nav-link');
 
-/* ── Scroll-reveal (IntersectionObserver) ───────────────────────────────── */
-(function () {
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12 }
-  );
+function updateActiveLink() {
+  const scrollMid = window.scrollY + window.innerHeight / 3;
 
-  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
-})();
-
-/* ── Hero canvas — floating particle field ──────────────────────────────── */
-(function () {
-  const canvas = document.getElementById('heroCanvas');
-  if (!canvas) return;
-
-  const ctx  = canvas.getContext('2d');
-  let W, H, particles;
-
-  const COLORS = [
-    'rgba(139, 92, 246, VAL)',   // purple
-    'rgba(59, 130, 246, VAL)',   // blue
-    'rgba(167, 139, 250, VAL)',  // purple-light
-    'rgba(96, 165, 250, VAL)',   // blue-light
-  ];
-
-  function resize() {
-    W = canvas.width  = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
-  }
-
-  function randomColor(alpha) {
-    const c = COLORS[Math.floor(Math.random() * COLORS.length)];
-    return c.replace('VAL', alpha);
-  }
-
-  function makeParticle() {
-    return {
-      x:   Math.random() * W,
-      y:   Math.random() * H,
-      r:   Math.random() * 1.8 + 0.4,
-      vx:  (Math.random() - 0.5) * 0.35,
-      vy:  (Math.random() - 0.5) * 0.35,
-      color: randomColor((Math.random() * 0.4 + 0.2).toFixed(2)),
-    };
-  }
-
-  function init() {
-    resize();
-    const COUNT = Math.min(Math.floor((W * H) / 9000), 90);
-    particles = Array.from({ length: COUNT }, makeParticle);
-  }
-
-  function drawLine(a, b, dist, maxDist) {
-    const alpha = (1 - dist / maxDist) * 0.12;
-    ctx.strokeStyle = `rgba(139, 92, 246, ${alpha.toFixed(3)})`;
-    ctx.lineWidth = 0.8;
-    ctx.beginPath();
-    ctx.moveTo(a.x, a.y);
-    ctx.lineTo(b.x, b.y);
-    ctx.stroke();
-  }
-
-  function tick() {
-    ctx.clearRect(0, 0, W, H);
-    const maxDist = 140;
-
-    particles.forEach(p => {
-      p.x += p.vx;
-      p.y += p.vy;
-      if (p.x < 0) p.x = W;
-      if (p.x > W) p.x = 0;
-      if (p.y < 0) p.y = H;
-      if (p.y > H) p.y = 0;
-
-      // Draw dot
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = p.color;
-      ctx.fill();
-    });
-
-    // Draw connecting lines
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < maxDist) drawLine(particles[i], particles[j], dist, maxDist);
-      }
+  let current = '';
+  sections.forEach(sec => {
+    if (sec.offsetTop <= scrollMid) {
+      current = sec.id;
     }
-
-    requestAnimationFrame(tick);
-  }
-
-  init();
-  tick();
-
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(init, 200);
   });
-})();
 
-/* ── Smooth scroll for all anchor links ────────────────────────────────── */
+  allLinks.forEach(link => {
+    const href = link.getAttribute('href').replace('#', '');
+    link.classList.toggle('active', href === current);
+  });
+}
+
+window.addEventListener('scroll', updateActiveLink, { passive: true });
+updateActiveLink(); // run on load
+
+/* ── Scroll-reveal (IntersectionObserver) ─────────────── */
+const revealEls = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry, idx) => {
+      if (entry.isIntersecting) {
+        // stagger siblings in the same parent
+        const siblings = Array.from(
+          entry.target.closest('.skills-grid, .projects-grid, .roadmap-grid, .contact-grid, .timeline')
+            ?.querySelectorAll(':scope > .reveal') ?? []
+        );
+        const order = siblings.indexOf(entry.target);
+        const delay  = order >= 0 ? order * 80 : 0;
+
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, delay);
+
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
+);
+
+revealEls.forEach(el => revealObserver.observe(el));
+
+/* ── Smooth scroll for anchor links ──────────────────── */
+// CSS scroll-behavior:smooth handles it, but this adds offset
+// compensation for the fixed navbar.
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', e => {
+  anchor.addEventListener('click', (e) => {
     const target = document.querySelector(anchor.getAttribute('href'));
     if (!target) return;
     e.preventDefault();
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    const navHeight = parseInt(
+      getComputedStyle(document.documentElement).getPropertyValue('--nav-h'),
+      10
+    ) || 72;
+
+    const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
+    window.scrollTo({ top, behavior: 'smooth' });
   });
 });
+
+/* ── Logo hover glow (footer SVG) ────────────────────── */
+const footerLogo = document.querySelector('.logo-footer');
+if (footerLogo) {
+  footerLogo.addEventListener('mouseenter', () => {
+    footerLogo.style.filter = 'drop-shadow(0 0 18px rgba(168,85,247,0.85))';
+  });
+  footerLogo.addEventListener('mouseleave', () => {
+    footerLogo.style.filter = 'drop-shadow(0 0 7px rgba(168,85,247,0.38))';
+  });
+}

@@ -3,158 +3,553 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <meta name="description" content="Ibrahim Yasin — AI & Electrical Engineer Portfolio | Applied AI, Machine Learning, NLP, Data Science, and Network Engineering." />
-  <meta name="author" content="Ibrahim Yasin" />
-
-  <title>Ibrahim Yasin | AI Engineer Portfolio</title>
-
+  <title>Ibrahim Yasin — Applied AI & Machine Learning Systems</title>
+  <meta name="description" content="Personal portfolio of Ibrahim Yasin — Applied AI & Machine Learning Systems student specialising in Python, NLP, PyTorch, FastAPI and Docker." />
+  <meta property="og:title" content="Ibrahim Yasin — Applied AI & Machine Learning Systems" />
+  <meta property="og:description" content="End-to-end AI, data science, and NLP systems builder." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-<!-- Navbar -->
-<nav class="navbar" id="navbar">
-  <div class="nav-inner">
-    <a class="nav-logo" href="#hero">IY</a>
+  <!-- Shared SVG defs — gradient & glow used by all three logo instances -->
+  <svg aria-hidden="true" width="0" height="0" style="position:absolute">
+    <defs>
+      <linearGradient id="iy-grad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+        <stop offset="0%"   stop-color="#818cf8"/>
+        <stop offset="50%"  stop-color="#a855f7"/>
+        <stop offset="100%" stop-color="#c084fc"/>
+      </linearGradient>
+      <linearGradient id="iy-bg" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+        <stop offset="0%"   stop-color="#1e1b4b" stop-opacity="0.95"/>
+        <stop offset="100%" stop-color="#0d0a1f" stop-opacity="0.95"/>
+      </linearGradient>
+      <filter id="iy-glow" x="-60%" y="-60%" width="220%" height="220%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="iy-iglow" x="-80%" y="-80%" width="260%" height="260%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+  </svg>
 
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#roadmap">Roadmap</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-
-    <button class="hamburger" id="hamburger">
-      <span></span><span></span><span></span>
-    </button>
+  <!-- Background ambient orbs -->
+  <div class="orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
   </div>
-</nav>
 
-<!-- Hero -->
-<section id="hero" class="hero">
-  <canvas id="heroCanvas"></canvas>
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="Ibrahim Yasin home">
+        <svg class="logo-svg" width="38" height="38" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="23.5" fill="url(#iy-bg)"/>
+          <circle cx="24" cy="24" r="22.5" stroke="url(#iy-grad)" stroke-width="0.5" opacity="0.4"/>
+          <path d="M 24 1.5 A 22.5 22.5 0 0 1 44.5 17" stroke="url(#iy-grad)" stroke-width="2" stroke-linecap="round" filter="url(#iy-glow)"/>
+          <path d="M 24 46.5 A 22.5 22.5 0 0 1 3.5 31" stroke="url(#iy-grad)" stroke-width="2" stroke-linecap="round" filter="url(#iy-glow)"/>
+          <path d="M 44.5 31 A 22.5 22.5 0 0 1 36 43.5" stroke="url(#iy-grad)" stroke-width="0.75" stroke-linecap="round" opacity="0.5"/>
+          <path d="M 3.5 17 A 22.5 22.5 0 0 1 12 4.5"  stroke="url(#iy-grad)" stroke-width="0.75" stroke-linecap="round" opacity="0.5"/>
+          <circle cx="24"  cy="1.5"  r="1.5" fill="url(#iy-grad)" filter="url(#iy-glow)"/>
+          <circle cx="44.5" cy="17" r="1.5" fill="url(#iy-grad)" filter="url(#iy-glow)"/>
+          <circle cx="24"  cy="46.5" r="1.5" fill="url(#iy-grad)" filter="url(#iy-glow)"/>
+          <circle cx="3.5" cy="31"  r="1.5" fill="url(#iy-grad)" filter="url(#iy-glow)"/>
+          <polygon points="24,11 35,24 24,37 13,24" fill="none" stroke="url(#iy-grad)" stroke-width="0.4" opacity="0.18"/>
+          <circle cx="24" cy="24" r="10" fill="url(#iy-grad)" opacity="0.06" filter="url(#iy-iglow)"/>
+          <text x="24" y="30.5" text-anchor="middle" fill="url(#iy-grad)" font-size="16" font-weight="800" font-family="Inter,system-ui,sans-serif" letter-spacing="-0.8" filter="url(#iy-glow)">IY</text>
+        </svg>
+      </a>
 
-  <div class="hero-content">
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
 
-    <!-- 🔥 PROFESSIONAL LOGO -->
-    <div class="ai-logo pro">
-      <svg viewBox="0 0 200 200">
-
-        <defs>
-          <linearGradient id="gradient-pro" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#8b5cf6"/>
-            <stop offset="100%" stop-color="#3b82f6"/>
-          </linearGradient>
-        </defs>
-
-        <circle cx="100" cy="100" r="70" class="logo-ring"/>
-        <circle cx="100" cy="100" r="70" class="logo-arc-pro"/>
-
-        <g class="orbit">
-          <circle cx="100" cy="30" r="3" class="dot"/>
-          <circle cx="170" cy="100" r="3" class="dot"/>
-          <circle cx="100" cy="170" r="3" class="dot"/>
-          <circle cx="30" cy="100" r="3" class="dot"/>
-        </g>
-
-        <text x="50%" y="55%" text-anchor="middle" class="logo-text-pro">IY</text>
-
-      </svg>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#hero"     class="nav-link">Home</a></li>
+        <li><a href="#about"    class="nav-link">About</a></li>
+        <li><a href="#skills"   class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#roadmap"  class="nav-link">Roadmap</a></li>
+        <li><a href="#contact"  class="nav-link">Contact</a></li>
+      </ul>
     </div>
+  </nav>
 
-    <p class="hero-badge">Applied AI & Machine Learning</p>
+  <main>
 
-    <h1 class="hero-name">
-      Ibrahim <span class="gradient-text">Yasin</span>
-    </h1>
+    <!-- ═══════════════════════ HERO ═══════════════════════ -->
+    <section id="hero" class="hero">
+      <div class="hero-inner">
 
-    <p class="hero-title">
-      Electrical Engineer | AI & ML Systems
-    </p>
+        <!-- Logo -->
+        <div class="hero-logo animate-in" style="--delay:0s">
+          <svg class="logo-svg logo-hero" width="96" height="96" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="23.5" fill="url(#iy-bg)"/>
+            <circle cx="24" cy="24" r="22.5" stroke="url(#iy-grad)" stroke-width="0.5" opacity="0.4"/>
+            <path d="M 24 1.5 A 22.5 22.5 0 0 1 44.5 17" stroke="url(#iy-grad)" stroke-width="2" stroke-linecap="round" filter="url(#iy-glow)"/>
+            <path d="M 24 46.5 A 22.5 22.5 0 0 1 3.5 31" stroke="url(#iy-grad)" stroke-width="2" stroke-linecap="round" filter="url(#iy-glow)"/>
+            <path d="M 44.5 31 A 22.5 22.5 0 0 1 36 43.5" stroke="url(#iy-grad)" stroke-width="0.75" stroke-linecap="round" opacity="0.5"/>
+            <path d="M 3.5 17 A 22.5 22.5 0 0 1 12 4.5"  stroke="url(#iy-grad)" stroke-width="0.75" stroke-linecap="round" opacity="0.5"/>
+            <circle cx="24"   cy="1.5"  r="1.5" fill="url(#iy-grad)" filter="url(#iy-glow)"/>
+            <circle cx="44.5" cy="17"   r="1.5" fill="url(#iy-grad)" filter="url(#iy-glow)"/>
+            <circle cx="24"   cy="46.5" r="1.5" fill="url(#iy-grad)" filter="url(#iy-glow)"/>
+            <circle cx="3.5"  cy="31"   r="1.5" fill="url(#iy-grad)" filter="url(#iy-glow)"/>
+            <polygon points="24,11 35,24 24,37 13,24" fill="none" stroke="url(#iy-grad)" stroke-width="0.4" opacity="0.18"/>
+            <circle cx="24" cy="24" r="10" fill="url(#iy-grad)" opacity="0.06" filter="url(#iy-iglow)"/>
+            <text x="24" y="30.5" text-anchor="middle" fill="url(#iy-grad)" font-size="16" font-weight="800" font-family="Inter,system-ui,sans-serif" letter-spacing="-0.8" filter="url(#iy-glow)">IY</text>
+          </svg>
+        </div>
 
-    <p class="hero-desc">
-      I build practical AI, NLP, and machine learning systems using Python, SQL,
-      PyTorch, spaCy, Hugging Face, FastAPI, and Docker.
-    </p>
+        <div class="hero-badge animate-in" style="--delay:0.1s">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="badge-icon"><path d="M12 2a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+          Available for opportunities
+        </div>
 
-    <div class="hero-actions">
-      <a href="#projects" class="btn-primary">View Projects</a>
-      <a href="https://github.com/ibrahim-yasin" target="_blank" class="btn-ghost">GitHub</a>
-    </div>
+        <h1 class="hero-name animate-in" style="--delay:0.15s">
+          Ibrahim <span class="text-gradient">Yasin</span>
+        </h1>
 
-  </div>
-</section>
+        <h2 class="hero-title animate-in" style="--delay:0.25s">
+          Applied AI &amp; Machine Learning Systems Student
+        </h2>
 
-<!-- About -->
-<section id="about" class="section">
-  <div class="container">
-    <h2>About Me</h2>
+        <p class="hero-desc animate-in" style="--delay:0.35s">
+          I build practical AI, data science, NLP, and machine learning systems using
+          Python, SQL, PyTorch, spaCy, Hugging Face, FastAPI, and Docker.
+        </p>
 
-    <p>
-      I am an Electrical Engineer, graduated in 2024 with a Very Good grade,
-      ranked 3rd in my class.
-    </p>
+        <div class="hero-actions animate-in" style="--delay:0.45s">
+          <a href="#projects" class="btn btn-primary">
+            View Projects
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+          </a>
+          <a href="https://github.com/ibrahim-yasin" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </section>
 
-    <p>
-      I have experience in network engineering including switch configuration,
-      routing, and infrastructure setup.
-    </p>
+    <!-- ═══════════════════════ ABOUT ═══════════════════════ -->
+    <section id="about" class="section">
+      <div class="container container--md">
+        <h2 class="section-title reveal">
+          <span class="text-gradient">About Me</span>
+          <span class="section-line"></span>
+        </h2>
+        <div class="glass-card about-card reveal">
+          <p>I am an Applied AI &amp; Machine Learning Systems student with a background in network engineering. I have worked on multiple specialized projects involving switch configuration, network setup, and infrastructure optimization in real-world environments.</p>
+          <p>I contributed to large-scale network projects for organizations such as the National Bank of Jordan and King Hussein Medical City, where I supported network deployment, configuration, and reliability.</p>
+          <p>Currently, I am expanding my expertise into AI, data science, and NLP systems, building end-to-end solutions that combine data engineering, machine learning, and production deployment.</p>
+        </div>
+      </div>
+    </section>
 
-    <p>
-      Currently transitioning into AI & Machine Learning Systems,
-      building real-world data and NLP applications.
-    </p>
-  </div>
-</section>
+    <!-- ═══════════════════════ SKILLS ═══════════════════════ -->
+    <section id="skills" class="section">
+      <div class="container container--lg">
+        <h2 class="section-title reveal">
+          <span class="text-gradient">Skills &amp; Technologies</span>
+          <span class="section-line"></span>
+        </h2>
+        <div class="skills-grid">
 
-<!-- Skills -->
-<section id="skills" class="section">
-  <div class="container">
-    <h2>Skills</h2>
+          <div class="glass-card skill-card reveal">
+            <div class="skill-header">
+              <div class="skill-icon" style="color:#818cf8">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </div>
+              <h3>Python &amp; Data Science</h3>
+            </div>
+            <div class="badge-group">
+              <span class="badge">Python</span><span class="badge">Pandas</span><span class="badge">NumPy</span><span class="badge">Matplotlib</span>
+            </div>
+          </div>
 
-    <p>Python • SQL • PyTorch • NLP • Docker • FastAPI • Networking</p>
-  </div>
-</section>
+          <div class="glass-card skill-card reveal">
+            <div class="skill-header">
+              <div class="skill-icon" style="color:#60a5fa">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+              </div>
+              <h3>SQL &amp; Databases</h3>
+            </div>
+            <div class="badge-group">
+              <span class="badge">PostgreSQL</span><span class="badge">SQLite</span><span class="badge">SQL</span><span class="badge">SQLAlchemy</span>
+            </div>
+          </div>
 
-<!-- Projects -->
-<section id="projects" class="section">
-  <div class="container">
-    <h2>Projects</h2>
+          <div class="glass-card skill-card reveal">
+            <div class="skill-header">
+              <div class="skill-icon" style="color:#c084fc">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/><circle cx="12" cy="12" r="10"/></svg>
+              </div>
+              <h3>Machine Learning</h3>
+            </div>
+            <div class="badge-group">
+              <span class="badge">Scikit-learn</span><span class="badge">Regression</span><span class="badge">Classification</span><span class="badge">Model Evaluation</span>
+            </div>
+          </div>
 
-    <p>Check my full work on GitHub 👇</p>
+          <div class="glass-card skill-card reveal">
+            <div class="skill-header">
+              <div class="skill-icon" style="color:#f472b6">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              </div>
+              <h3>NLP</h3>
+            </div>
+            <div class="badge-group">
+              <span class="badge">spaCy</span><span class="badge">Hugging Face</span><span class="badge">Transformers</span><span class="badge">NER</span>
+            </div>
+          </div>
 
-    <a href="https://github.com/ibrahim-yasin" target="_blank" class="btn-primary">
-      View All Projects
-    </a>
-  </div>
-</section>
+          <div class="glass-card skill-card reveal">
+            <div class="skill-header">
+              <div class="skill-icon" style="color:#34d399">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+              </div>
+              <h3>Deployment &amp; Production</h3>
+            </div>
+            <div class="badge-group">
+              <span class="badge">FastAPI</span><span class="badge">Docker</span><span class="badge">APIs</span><span class="badge">ML Pipelines</span>
+            </div>
+          </div>
 
-<!-- Roadmap -->
-<section id="roadmap" class="section">
-  <div class="container">
-    <h2>Roadmap</h2>
+          <div class="glass-card skill-card reveal">
+            <div class="skill-header">
+              <div class="skill-icon" style="color:#fb923c">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+              </div>
+              <h3>Tools</h3>
+            </div>
+            <div class="badge-group">
+              <span class="badge">Git</span><span class="badge">GitHub</span><span class="badge">Replit</span><span class="badge">VS Code</span>
+            </div>
+          </div>
 
-    <p>Upcoming: RAG, Knowledge Graphs, Deployment, Capstone Project</p>
-  </div>
-</section>
+        </div>
+      </div>
+    </section>
 
-<!-- Contact -->
-<section id="contact" class="section">
-  <div class="container">
-    <h2>Contact</h2>
+    <!-- ═══════════════════════ PROJECTS ═══════════════════════ -->
+    <section id="projects" class="section">
+      <div class="container container--xl">
+        <h2 class="text-gradient projects-heading reveal">AI.SPIRE Projects</h2>
+        <p class="section-sub reveal">Applied AI program — end-to-end project portfolio</p>
 
-    <p>📞 00962796436269</p>
-    <p>✉️ ibrayasin02@outlook.com</p>
+        <div class="timeline">
 
-    <a href="https://github.com/ibrahim-yasin" target="_blank">GitHub</a>
-    <br>
-    <a href="https://www.linkedin.com/in/ibrahim-yasin-9b33a0320" target="_blank">LinkedIn</a>
-  </div>
-</section>
+          <!-- Module 1 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <h3 class="module-title">Module 1</h3>
+            <div class="projects-grid">
+              <div class="glass-card project-card">
+                <h4>Hospital Admission Records Analysis</h4>
+                <a href="https://github.com/LevelUp-Applied-AI/m1-l1-git-workflows-ibrahim-yasin/tree/integration/collab-setup" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+          </div>
 
-<script src="script.js"></script>
+          <!-- Module 2 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <h3 class="module-title">Module 2</h3>
+            <div class="projects-grid">
+              <div class="glass-card project-card">
+                <h4>Retail Sales Data Pipeline</h4>
+                <a href="https://github.com/LevelUp-Applied-AI/m2-l2-data-pipeline-ibrahim-yasin/tree/lab-2/data-pipeline" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+              <div class="glass-card project-card">
+                <h4>Housing Price Prediction — PyTorch</h4>
+                <a href="https://github.com/LevelUp-Applied-AI/m2-i2-pytorch-ibrahim-yasin/tree/integration-2/pytorch" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Module 3 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <h3 class="module-title">Module 3</h3>
+            <div class="projects-grid">
+              <div class="glass-card project-card">
+                <h4>SQL Analytics</h4>
+                <a href="https://github.com/LevelUp-Applied-AI/m3-l3-sql-analytics-ibrahim-yasin/tree/lab-3/sql-analytics" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+              <div class="glass-card project-card">
+                <h4>ETL Pipeline</h4>
+                <a href="https://github.com/LevelUp-Applied-AI/m3-i3-etl-pipeline-ibrahim-yasin/tree/integration-3/etl-pipeline" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Module 4 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <h3 class="module-title">Module 4</h3>
+            <div class="projects-grid">
+              <div class="glass-card project-card">
+                <h4>Descriptive Analytics</h4>
+                <a href="https://github.com/LevelUp-Applied-AI/m4-l4-descriptive-analytics-ibrahim-yasin-1/tree/lab-4-descriptive-analytics" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+              <div class="glass-card project-card">
+                <h4>KPI Dashboard</h4>
+                <a href="https://github.com/LevelUp-Applied-AI/m4-i4-kpi-dashboard-ibrahim-yasin/tree/integration-4-kpi-dashboard" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Module 5 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <h3 class="module-title">Module 5</h3>
+            <div class="projects-grid">
+              <div class="glass-card project-card">
+                <h4>Regression &amp; Evaluation</h4>
+                <a href="https://github.com/LevelUp-Applied-AI/m5-l5a-regression-eval-ibrahim-yasin/tree/lab-5a-regression-eval" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+              <div class="glass-card project-card">
+                <h4>ML Pipeline</h4>
+                <a href="https://github.com/LevelUp-Applied-AI/m5-i5a-ml-pipeline-ibrahim-yasin/tree/integration-5a-ml-pipeline" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+              <div class="glass-card project-card">
+                <h4>Tree Models</h4>
+                <a href="https://github.com/LevelUp-Applied-AI/m5-l5b-tree-models-ibrahim-yasin/tree/lab-5b-tree-models" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+              <div class="glass-card project-card">
+                <h4>Hyperparameter Tuning</h4>
+                <a href="https://github.com/ibrahim-yasin/Hyperparameter-Tuning-Nested-Cross-Validation" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+              <div class="glass-card project-card">
+                <h4>Model Comparison</h4>
+                <a href="https://github.com/LevelUp-Applied-AI/m5-i5b-model-comparison-ibrahim-yasin/tree/integration-5b-model-comparison" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+              <div class="glass-card project-card">
+                <h4>Production ML CLI</h4>
+                <a href="https://github.com/ibrahim-yasin/m5b-production-cli" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Module 6 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <h3 class="module-title">Module 6</h3>
+            <div class="projects-grid">
+              <div class="glass-card project-card">
+                <h4>NER Pipeline</h4>
+                <a href="https://github.com/LevelUp-Applied-AI/m6-l6a-ner-pipeline-ibrahim-yasin-2/tree/lab-6a-ner-pipeline" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+              <div class="glass-card project-card">
+                <h4>Multilingual NER</h4>
+                <a href="https://github.com/LevelUp-Applied-AI/m6-l6a-ner-pipeline-ibrahim-yasin-2/tree/stretch-multilingual-ner" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+              <div class="glass-card project-card">
+                <h4>Entity Analysis</h4>
+                <a href="https://github.com/LevelUp-Applied-AI/m6-i6a-entity-analysis-ibrahim-yasin/tree/integration-6a-entity-analysis" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /timeline -->
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ ROADMAP ═══════════════════════ -->
+    <section id="roadmap" class="section">
+      <div class="container container--xl">
+        <h2 class="text-gradient projects-heading reveal">Roadmap</h2>
+        <p class="section-sub reveal">What's next in the AI.SPIRE program</p>
+        <div class="roadmap-grid">
+
+          <div class="glass-card roadmap-card reveal">
+            <span class="coming-soon-badge">Coming Soon</span>
+            <h3>Module 7 — Advanced NLP Tasks</h3>
+            <p>Sequence classification, sentiment analysis, and multi-label NLP tasks using transformer architectures.</p>
+          </div>
+          <div class="glass-card roadmap-card reveal">
+            <span class="coming-soon-badge">Coming Soon</span>
+            <h3>Module 8 — RAG Systems &amp; Vector Retrieval</h3>
+            <p>Retrieval-augmented generation systems with vector databases and semantic search pipelines.</p>
+          </div>
+          <div class="glass-card roadmap-card reveal">
+            <span class="coming-soon-badge">Coming Soon</span>
+            <h3>Module 9 — Knowledge Graphs &amp; Semantic Web</h3>
+            <p>Knowledge graph construction, entity linking, and semantic reasoning for AI applications.</p>
+          </div>
+          <div class="glass-card roadmap-card reveal">
+            <span class="coming-soon-badge">Coming Soon</span>
+            <h3>Module 10 — Deployment I</h3>
+            <p>Containerized ML service deployment using Docker, FastAPI, and cloud-native infrastructure.</p>
+          </div>
+          <div class="glass-card roadmap-card reveal">
+            <span class="coming-soon-badge">Coming Soon</span>
+            <h3>Module 11 — Deployment II</h3>
+            <p>Advanced deployment patterns, monitoring, CI/CD pipelines, and production ML reliability.</p>
+          </div>
+          <div class="glass-card roadmap-card reveal">
+            <span class="coming-soon-badge">Coming Soon</span>
+            <h3>Module 12 — Capstone Project</h3>
+            <p>End-to-end applied AI system integrating data engineering, ML modeling, NLP, and production deployment.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ CONTACT ═══════════════════════ -->
+    <section id="contact" class="section contact-section">
+      <div class="contact-glow" aria-hidden="true"></div>
+      <div class="container container--md">
+        <h2 class="text-gradient projects-heading text-center reveal">Let's Connect</h2>
+
+        <div class="contact-grid">
+
+          <a href="tel:+962796436269" class="glass-card contact-card reveal">
+            <div class="contact-sweep" aria-hidden="true"></div>
+            <div class="contact-icon-row">
+              <div class="contact-icon" style="color:#34d399">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.36 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6.29 6.29l1.62-1.62a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <p class="contact-label">Phone / WhatsApp</p>
+                <p class="contact-value">00962796436269</p>
+              </div>
+            </div>
+            <span class="btn btn-ghost contact-btn">Call Me</span>
+          </a>
+
+          <a href="https://github.com/ibrahim-yasin" target="_blank" rel="noopener noreferrer" class="glass-card contact-card reveal">
+            <div class="contact-sweep" aria-hidden="true"></div>
+            <div class="contact-icon-row">
+              <div class="contact-icon" style="color:#fff">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              </div>
+              <div>
+                <p class="contact-label">GitHub</p>
+                <p class="contact-value">ibrahim-yasin</p>
+              </div>
+            </div>
+            <span class="btn btn-ghost contact-btn">Open GitHub</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/ibrahim-yasin-9b33a0320" target="_blank" rel="noopener noreferrer" class="glass-card contact-card reveal">
+            <div class="contact-sweep" aria-hidden="true"></div>
+            <div class="contact-icon-row">
+              <div class="contact-icon" style="color:#60a5fa">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </div>
+              <div>
+                <p class="contact-label">LinkedIn</p>
+                <p class="contact-value">ibrahim-yasin-9b33a0320</p>
+              </div>
+            </div>
+            <span class="btn btn-ghost contact-btn">Open LinkedIn</span>
+          </a>
+
+          <a href="mailto:ibrayasin02@outlook.com" class="glass-card contact-card reveal">
+            <div class="contact-sweep" aria-hidden="true"></div>
+            <div class="contact-icon-row">
+              <div class="contact-icon" style="color:#f472b6">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <p class="contact-label">Email</p>
+                <p class="contact-value">ibrayasin02@outlook.com</p>
+              </div>
+            </div>
+            <span class="btn btn-ghost contact-btn">Send Email</span>
+          </a>
+
+        </div>
+
+        <!-- CV Card -->
+        <div class="glass-card cv-card reveal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="cv-icon"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <p class="cv-text">My CV will be available here soon.</p>
+          <button class="btn btn-outline" disabled aria-disabled="true">Coming Soon</button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="site-footer">
+    <svg class="logo-svg logo-footer" width="36" height="36" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="24" cy="24" r="23.5" fill="url(#iy-bg)"/>
+      <circle cx="24" cy="24" r="22.5" stroke="url(#iy-grad)" stroke-width="0.5" opacity="0.4"/>
+      <path d="M 24 1.5 A 22.5 22.5 0 0 1 44.5 17" stroke="url(#iy-grad)" stroke-width="2" stroke-linecap="round" filter="url(#iy-glow)"/>
+      <path d="M 24 46.5 A 22.5 22.5 0 0 1 3.5 31" stroke="url(#iy-grad)" stroke-width="2" stroke-linecap="round" filter="url(#iy-glow)"/>
+      <path d="M 44.5 31 A 22.5 22.5 0 0 1 36 43.5" stroke="url(#iy-grad)" stroke-width="0.75" stroke-linecap="round" opacity="0.5"/>
+      <path d="M 3.5 17 A 22.5 22.5 0 0 1 12 4.5"  stroke="url(#iy-grad)" stroke-width="0.75" stroke-linecap="round" opacity="0.5"/>
+      <circle cx="24"   cy="1.5"  r="1.5" fill="url(#iy-grad)" filter="url(#iy-glow)"/>
+      <circle cx="44.5" cy="17"   r="1.5" fill="url(#iy-grad)" filter="url(#iy-glow)"/>
+      <circle cx="24"   cy="46.5" r="1.5" fill="url(#iy-grad)" filter="url(#iy-glow)"/>
+      <circle cx="3.5"  cy="31"   r="1.5" fill="url(#iy-grad)" filter="url(#iy-glow)"/>
+      <polygon points="24,11 35,24 24,37 13,24" fill="none" stroke="url(#iy-grad)" stroke-width="0.4" opacity="0.18"/>
+      <circle cx="24" cy="24" r="10" fill="url(#iy-grad)" opacity="0.06" filter="url(#iy-iglow)"/>
+      <text x="24" y="30.5" text-anchor="middle" fill="url(#iy-grad)" font-size="16" font-weight="800" font-family="Inter,system-ui,sans-serif" letter-spacing="-0.8" filter="url(#iy-glow)">IY</text>
+    </svg>
+    <p class="footer-name">Ibrahim Yasin &copy; 2026</p>
+    <p class="footer-sub">Applied AI &amp; Machine Learning Systems Portfolio</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
